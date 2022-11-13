@@ -5,11 +5,11 @@ import com.example.team12.logindemo.domain存放实体类.User;
 public interface UserService {
     /**
      * 登录业务逻辑
-     * @param name 账户名
+     * @param id 账号
      * @param password 密码
      * @return
      */
-    User loginService(String name, String password);
+    User loginService(String id, String password);
 
     /**
      * 注册业务逻辑
