@@ -1,6 +1,6 @@
-package com.example.team12.logindemo.service存放业务逻辑接口;
+package logindemo.service存放业务逻辑接口;
 
-import com.example.team12.logindemo.domain存放实体类.User;
+import logindemo.domain存放实体类.User;
 
 public interface UserService {
     /**

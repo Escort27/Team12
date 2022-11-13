@@ -1,4 +1,4 @@
-package com.example.team12.logindemo.domain存放实体类;
+package logindemo.domain存放实体类;
 
 import javax.persistence.*;
 

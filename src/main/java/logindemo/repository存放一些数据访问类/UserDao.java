@@ -1,6 +1,6 @@
-package com.example.team12.logindemo.repository存放一些数据访问类;
+package logindemo.repository存放一些数据访问类;
 
-import com.example.team12.logindemo.domain存放实体类.User;
+import logindemo.domain存放实体类.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
