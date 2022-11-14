@@ -1,6 +1,6 @@
-package com.Team12.logindemo.service;
+package com.Team12.demo.service业务逻辑接口包;
 
-import com.Team12.logindemo.domain.User;
+import com.Team12.demo.domain实体类包.User;
 
 public interface UserService {
 

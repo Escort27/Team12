@@ -1,13 +1,13 @@
-package com.Team12.logindemo;
+package com.Team12.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootLoginDemoApplication {
+public class SpringBootDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootLoginDemoApplication.class, args);
+        SpringApplication.run(SpringBootDemoApplication.class, args);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.Team12.logindemo.domain;
+package com.Team12.demo.domain实体类包;
 
 import javax.persistence.*;
 

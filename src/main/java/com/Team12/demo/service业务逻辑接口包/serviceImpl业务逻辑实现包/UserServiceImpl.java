@@ -1,8 +1,8 @@
-package com.Team12.logindemo.service.serviceImpl;
+package com.Team12.demo.service业务逻辑接口包.serviceImpl业务逻辑实现包;
 
-import com.Team12.logindemo.repository.UserDao;
-import com.Team12.logindemo.service.UserService;
-import com.Team12.logindemo.domain.User;
+import com.Team12.demo.repository数据访问层包或叫dao包.UserDao;
+import com.Team12.demo.service业务逻辑接口包.UserService;
+import com.Team12.demo.domain实体类包.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
