@@ -27,8 +27,23 @@ public class UserServiceImpl implements UserService {
         }
         else{
             //返回创建好的用户对象
+            //发现数据库中baned设置默认值0，用户注册完，baned的值为null，并没有设置为0,所以加上下面语句
+            user.setBaned(false);
             User newUser = userDao.save(user);
             return newUser;
+        }
+    }
+
+    @Override
+    public User changePasswordService(String uname , String oldPassword , String newPassword) {
+        User user = userDao.findByUname(uname);
+        if(user.getPassword().equals(oldPassword)){
+            user.setPassword(newPassword);
+            userDao.save(user);
+            return user;
+        }
+        else{
+            return null;
         }
     }
 }

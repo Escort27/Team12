@@ -23,6 +23,16 @@ public class User {
 
     private int uclass;
 
+    private Boolean baned;
+
+    public Boolean getBaned() {
+        return baned;
+    }
+
+    public void setBaned(Boolean baned) {
+        this.baned = baned;
+    }
+
     public Long getUid() {
         return uid;
     }

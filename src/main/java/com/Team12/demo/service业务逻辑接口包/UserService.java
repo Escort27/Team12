@@ -7,4 +7,7 @@ public interface UserService {
     User loginService(String uname, String password);
 
     User registService(User user);
+
+    User changePasswordService(String uname , String oldPassword , String newPassword);
+
 }

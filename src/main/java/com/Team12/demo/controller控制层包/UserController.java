@@ -17,9 +17,15 @@ public class UserController {
     public UserResult<User> loginController(@RequestParam String uname, @RequestParam String password){
         User user = userService.loginService(uname, password);
         if(user!=null){
-            return UserResult.success(user,"登录成功！");
+            if(user.getBaned() == true){
+                return UserResult.error("3","该账号已被封禁！");
+            }
+            else{
+                return UserResult.success(user,"登录成功！");
+            }
+
         }else{
-            return UserResult.error("123","账号或密码错误！");
+            return UserResult.error("1","账号或密码错误！");
         }
     }
 
@@ -29,7 +35,19 @@ public class UserController {
         if(user!=null){
             return UserResult.success(user,"注册成功！");
         }else{
-            return UserResult.error("456","用户名已存在！");
+            return UserResult.error("2","用户名已存在！");
         }
     }
+
+    @PostMapping("/changePassword")
+    public UserResult<User> changePasswordController(@RequestParam String uname , @RequestParam String oldPassword , @RequestParam String newPassword){
+        User user = userService.changePasswordService(uname , oldPassword , newPassword);
+        if(user!=null){
+            return UserResult.success(user,"更改密码成功！");
+        }
+        else{
+            return UserResult.error("4","旧密码不匹配！");
+        }
+    }
+
 }
