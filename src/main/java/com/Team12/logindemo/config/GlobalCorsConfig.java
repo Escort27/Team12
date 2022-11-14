@@ -1,4 +1,4 @@
-package logindemo.config存放配置类;
+package com.Team12.logindemo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

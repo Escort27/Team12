@@ -1,15 +1,15 @@
-package logindemo.service存放业务逻辑接口;
+package com.Team12.logindemo.service;
 
-import logindemo.domain存放实体类.User;
+import com.Team12.logindemo.domain.User;
 
 public interface UserService {
     /**
      * 登录业务逻辑
-     * @param id 账号
+     * @param uname 账户名
      * @param password 密码
      * @return
      */
-    User loginService(String id, String password);
+    User loginService(String uname, String password);
 
     /**
      * 注册业务逻辑

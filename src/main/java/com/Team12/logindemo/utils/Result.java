@@ -1,6 +1,6 @@
-package logindemo.utils存放工具类;
+package com.Team12.logindemo.utils;
 
-public class UserResult<T> {
+public class Result<T> {
     private String code;
     private String msg;
     private T data;
@@ -29,36 +29,36 @@ public class UserResult<T> {
         this.data = data;
     }
 
-    public UserResult() {
+    public Result() {
     }
 
-    public UserResult(T data) {
+    public Result(T data) {
         this.data = data;
     }
 
-    public static UserResult success() {
-        UserResult result = new UserResult<>();
+    public static Result success() {
+        Result result = new Result<>();
         result.setCode("0");
         result.setMsg("成功");
         return result;
     }
 
-    public static <T> UserResult<T> success(T data) {
-        UserResult<T> result = new UserResult<>(data);
+    public static <T> Result<T> success(T data) {
+        Result<T> result = new Result<>(data);
         result.setCode("0");
         result.setMsg("成功");
         return result;
     }
 
-    public static <T> UserResult<T> success(T data, String msg) {
-        UserResult<T> result = new UserResult<>(data);
+    public static <T> Result<T> success(T data,String msg) {
+        Result<T> result = new Result<>(data);
         result.setCode("0");
         result.setMsg(msg);
         return result;
     }
 
-    public static UserResult error(String code, String msg) {
-        UserResult result = new UserResult();
+    public static Result error(String code, String msg) {
+        Result result = new Result();
         result.setCode(code);
         result.setMsg(msg);
         return result;
