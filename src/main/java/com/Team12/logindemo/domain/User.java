@@ -6,22 +6,28 @@ import javax.persistence.*;
 @Entity
 public class User {
     // 注意属性名要与数据表中的字段名一致
-    // 主键自增int(10)对应long
+    // 属性varchar对应String
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long uid;
+    private Long uid;
 
-    // 用户名属性varchar对应String
     private String uname;
 
-    // 密码属性varchar对应String
     private String password;
 
-    public long getUid() {
+    private String nickname;
+
+    private int yearOfGraduate;
+
+    private String umajor;
+
+    private int uclass;
+
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(long uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 
@@ -39,5 +45,37 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public int getYearOfGraduate() {
+        return yearOfGraduate;
+    }
+
+    public void setYearOfGraduate(int yearOfGraduate) {
+        this.yearOfGraduate = yearOfGraduate;
+    }
+
+    public String getUmajor() {
+        return umajor;
+    }
+
+    public void setUmajor(String umajor) {
+        this.umajor = umajor;
+    }
+
+    public int getUclass() {
+        return uclass;
+    }
+
+    public void setUclass(int uclass) {
+        this.uclass = uclass;
     }
 }
