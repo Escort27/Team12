@@ -75,4 +75,12 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
+
+    @Override
+    public User banUserService(String uname , boolean ban) {
+        User user = userDao.findByUname(uname);
+        user.setBaned(ban);
+        userDao.save(user);
+        return user;
+    }
 }

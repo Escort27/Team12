@@ -12,4 +12,5 @@ public interface UserService {
 
     User changeInformationService(String uname , int newYear , String newMajor , int newClass , String newNickname );
 
+    User banUserService(String uname , boolean ban);
 }

@@ -61,4 +61,9 @@ public class UserController {
         }
     }
 
+    @PostMapping("/banUser")
+    public UserResult<User>  banUserService(@RequestParam String uname , @RequestParam boolean ban){
+        User user = userService.banUserService(uname , ban);
+        return UserResult.success(user , "变更账户状态成功！");
+    }
 }
