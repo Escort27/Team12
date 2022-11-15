@@ -10,6 +10,6 @@ public interface UserService {
 
     User changePasswordService(String uname , String oldPassword , String newPassword);
 
-    User changeInformationService(String uname , int newyear , String newmajor , int newClass , String newNickname );
+    User changeInformationService(String uname , int newYear , String newMajor , int newClass , String newNickname );
 
 }

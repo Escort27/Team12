@@ -50,4 +50,15 @@ public class UserController {
         }
     }
 
+    @PostMapping("/changeInformation")
+    public UserResult<User> changeInformationService(@RequestParam String uname , @RequestParam int newYear , @RequestParam String newMajor , @RequestParam int newClass , @RequestParam String newNickname){
+        User user = userService.changeInformationService(uname , newYear , newMajor , newClass , newNickname);
+        if(user!=null){
+            return UserResult.success(user,"修改资料成功！");
+        }
+        else{
+            return UserResult.error("5","资料没有变更！");
+        }
+    }
+
 }
