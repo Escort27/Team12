@@ -1,4 +1,4 @@
-package com.Team12.demo.utils存放工具类;
+package com.Team12.YQdemo.utils存放工具类;
 
 public class UserResult<T> {
     private String code;

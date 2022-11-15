@@ -1,8 +1,8 @@
-package com.Team12.demo.controller控制层包;
+package com.Team12.YQdemo.controller控制层包;
 
-import com.Team12.demo.service业务逻辑接口包.UserService;
-import com.Team12.demo.utils存放工具类.UserResult;
-import com.Team12.demo.domain实体类包.User;
+import com.Team12.YQdemo.service业务逻辑接口包.UserService;
+import com.Team12.YQdemo.utils存放工具类.UserResult;
+import com.Team12.YQdemo.domain实体类包.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

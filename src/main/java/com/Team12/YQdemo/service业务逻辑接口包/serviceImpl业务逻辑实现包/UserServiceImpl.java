@@ -1,8 +1,8 @@
-package com.Team12.demo.service业务逻辑接口包.serviceImpl业务逻辑实现包;
+package com.Team12.YQdemo.service业务逻辑接口包.serviceImpl业务逻辑实现包;
 
-import com.Team12.demo.repository数据访问层包或叫dao包.UserDao;
-import com.Team12.demo.service业务逻辑接口包.UserService;
-import com.Team12.demo.domain实体类包.User;
+import com.Team12.YQdemo.repository数据访问层包或叫dao包.UserDao;
+import com.Team12.YQdemo.service业务逻辑接口包.UserService;
+import com.Team12.YQdemo.domain实体类包.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -45,5 +45,17 @@ public class UserServiceImpl implements UserService {
         else{
             return null;
         }
+    }
+
+    @Override
+    public User changeInformationService(String uname , int newyear , String newmajor , int newClass , String newNickname ){
+        User user = userDao.findByUname(uname);
+//        if(newNickname != null) {
+//            user.setNickname(newNickname);
+//        }
+//        if(newyear != null){
+//            user.setYearOfGraduate(newyear);
+//        }
+
     }
 }

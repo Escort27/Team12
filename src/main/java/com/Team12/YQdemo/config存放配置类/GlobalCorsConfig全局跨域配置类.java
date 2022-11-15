@@ -1,4 +1,4 @@
-package com.Team12.demo.config存放配置类;
+package com.Team12.YQdemo.config存放配置类;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

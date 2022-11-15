@@ -1,4 +1,4 @@
-package com.Team12.demo;
+package com.Team12.YQdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
