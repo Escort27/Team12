@@ -1,11 +1,8 @@
 package com.example.team12.web.control;
 
-import com.example.team12.bean.fzumap;
 import com.example.team12.service.Impl.FzuServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author cr

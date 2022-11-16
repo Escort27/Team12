@@ -1,12 +1,10 @@
 package com.example.team12.service.Impl;
 
-import com.example.team12.bean.fzumap;
 import com.example.team12.dao.FzuMapper;
 import com.example.team12.service.FzuService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author cr
