@@ -79,6 +79,11 @@ public class UserServiceImpl implements UserService {
         }
     }
     @Override
+    public List<User> userListService() {
+        List<User> userList = userDao.findAll();
+        return userList;
+    }
+    @Override
     public User banUserService(String uname , boolean ban) {
         User user = userDao.findByUname(uname);
         user.setBaned(ban);
@@ -87,8 +92,8 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public List<User> classListService(String umajor , int grade , int uclass) {
-        List<User> userList = userDao.findByUmajorAndGradeAndUclassAndInclass(umajor , grade , uclass , true);
-        return userList;
+        List<User> classUserList = userDao.findAllByUmajorAndGradeAndUclassAndInclass(umajor , grade , uclass , true);
+        return classUserList;
     }
     @Override
     public User classJoinService(String uname , String realname , String sno) {
@@ -96,6 +101,13 @@ public class UserServiceImpl implements UserService {
         user.setRealname(realname);
         user.setSno(sno);
         user.setInclass(true);
+        userDao.save(user);
+        return user;
+    }
+    @Override
+    public User classOutService(String sno) {
+        User user = userDao.findBySno(sno);
+        user.setInclass(false);
         userDao.save(user);
         return user;
     }

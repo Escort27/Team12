@@ -10,5 +10,6 @@ import java.util.List;
 public interface UserDao extends JpaRepository<User, Long> {
     User findByUname(String uname); //通过uid查找用户，注意要按照JPA的格式使用驼峰命名法
     User findByUnameAndPassword(String uname, String password);//通过uid和密码查找用户
-    List<User> findByUmajorAndGradeAndUclassAndInclass(String umajor , int grade , int uclass , boolean inclass);
+    List<User> findAllByUmajorAndGradeAndUclassAndInclass(String umajor , int grade , int uclass , boolean inclass);
+    User findBySno(String sno);
 }

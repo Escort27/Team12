@@ -62,21 +62,37 @@ public class UserController {
         }
     }
 
-    @PostMapping("/manager/banUser")
+    @PostMapping("/manager/userList")//后台账户列表
+    public List<User>  userListService(){
+        List<User> userList = userService.userListService();
+        return userList;
+    }
+
+    @PostMapping("/manager/userList/banUser")//后台封禁用户
     public UserResult<User>  banUserService(@RequestParam String uname , @RequestParam boolean ban){
         User user = userService.banUserService(uname , ban);
         return UserResult.success(user , "变更账户状态成功！");
     }
 
-    @PostMapping("/classSelect/userList")
-    public List<User>  classSelect_userList(@RequestParam String umajor , @RequestParam int grade , @RequestParam int uclass){
+    @PostMapping("/classSelect/classUserList")//前台搜索班级班级同学列表
+    public List<User>  classSelectUserList(@RequestParam String umajor , @RequestParam int grade , @RequestParam int uclass){
         List<User> userList = userService.classListService(umajor , grade , uclass);
         return userList;
     }
 
-    @PostMapping("/classSelect/join")
-    public UserResult<User>  classSelect_userList(@RequestParam String uname , @RequestParam String realname , @RequestParam String sno){
+    @PostMapping("/classSelect/classUserList/join")//前台加入班级
+    public UserResult<User>  classSelectJoin(@RequestParam String uname , @RequestParam String realname , @RequestParam String sno){
         User user = userService.classJoinService(uname , realname , sno);
         return UserResult.success(user , "加入班级成功！");
+    }
+    @PostMapping("/manager/classUserList")//后台班级管理班级同学列表
+    public List<User>  managerClassUserList(@RequestParam String umajor , @RequestParam int grade , @RequestParam int uclass){
+        List<User> userList = userService.classListService(umajor , grade , uclass);
+        return userList;
+    }
+    @PostMapping("manager/classUserList/out")//后台班级管理踢出成员
+    public UserResult<User> managerClassUserOut(@RequestParam String sno){
+        User user =userService.classOutService(sno);
+        return UserResult.success(user ,"踢出成员成功！");
     }
 }
