@@ -17,13 +17,54 @@ public class User {
 
     private String nickname;
 
-    private int yearOfGraduate;
+    private int grade;
 
     private String umajor;
 
     private int uclass;
 
     private Boolean baned;
+
+    private String avatar;
+
+    private boolean inclass;
+
+    private String sno;
+
+    private String realname;
+
+    public String getSno() {
+        return sno;
+    }
+
+    public void setSno(String sno) {
+        this.sno = sno;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public boolean isInclass() {
+        return inclass;
+    }
+
+    public void setInclass(boolean inclass) {
+        this.inclass = inclass;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
 
     public Boolean getBaned() {
         return baned;
@@ -65,12 +106,12 @@ public class User {
         this.nickname = nickname;
     }
 
-    public int getYearOfGraduate() {
-        return yearOfGraduate;
+    public int getGrade() {
+        return grade;
     }
 
-    public void setYearOfGraduate(int yearOfGraduate) {
-        this.yearOfGraduate = yearOfGraduate;
+    public void setGrade(int yearOfGraduate) {
+        this.grade = yearOfGraduate;
     }
 
     public String getUmajor() {
