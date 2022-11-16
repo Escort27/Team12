@@ -1,11 +1,12 @@
 package com.Team12.YQdemo.controller控制层包;
 
+import com.Team12.YQdemo.domain实体类包.User;
 import com.Team12.YQdemo.service业务逻辑接口包.UserService;
 import com.Team12.YQdemo.utils存放工具类.UserResult;
-import com.Team12.YQdemo.domain实体类包.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -61,9 +62,21 @@ public class UserController {
         }
     }
 
-    @PostMapping("/banUser")
+    @PostMapping("/manager/banUser")
     public UserResult<User>  banUserService(@RequestParam String uname , @RequestParam boolean ban){
         User user = userService.banUserService(uname , ban);
         return UserResult.success(user , "变更账户状态成功！");
+    }
+
+    @PostMapping("/classSelect/userList")
+    public List<User>  classSelect_userList(@RequestParam String umajor , @RequestParam int grade , @RequestParam int uclass){
+        List<User> userList = userService.classListService(umajor , grade , uclass);
+        return userList;
+    }
+
+    @PostMapping("/classSelect/join")
+    public UserResult<User>  classSelect_userList(@RequestParam String uname , @RequestParam String realname , @RequestParam String sno){
+        User user = userService.classJoinService(uname , realname , sno);
+        return UserResult.success(user , "加入班级成功！");
     }
 }
