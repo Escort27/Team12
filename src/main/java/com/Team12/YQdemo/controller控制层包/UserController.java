@@ -1,6 +1,7 @@
 package com.Team12.YQdemo.controller控制层包;
 
 import com.Team12.YQdemo.domain实体类包.User;
+import com.Team12.YQdemo.domain实体类包.uClass;
 import com.Team12.YQdemo.service业务逻辑接口包.UserService;
 import com.Team12.YQdemo.utils存放工具类.UserResult;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +42,8 @@ public class UserController {
     }
 
     @PostMapping("/changePassword")
-    public UserResult<User> changePasswordController(@RequestParam String uname , @RequestParam String oldPassword , @RequestParam String newPassword){
-        User user = userService.changePasswordService(uname , oldPassword , newPassword);
+    public UserResult<User> changePasswordController(@RequestParam long uid , @RequestParam String oldPassword , @RequestParam String newPassword){
+        User user = userService.changePasswordService(uid , oldPassword , newPassword);
         if(user!=null){
             return UserResult.success(user,"更改密码成功！");
         }
@@ -52,8 +53,8 @@ public class UserController {
     }
 
     @PostMapping("/changeInformation")
-    public UserResult<User> changeInformationService(@RequestParam String uname , @RequestParam int newYear , @RequestParam String newMajor , @RequestParam int newClass , @RequestParam String newNickname){
-        User user = userService.changeInformationService(uname , newYear , newMajor , newClass , newNickname);
+    public UserResult<User> changeInformationService(@RequestParam long uid , @RequestParam String newYear , @RequestParam String newMajor , @RequestParam String newClass , @RequestParam String newNickname){
+        User user = userService.changeInformationService(uid , newYear , newMajor , newClass , newNickname);
         if(user!=null){
             return UserResult.success(user,"修改资料成功！");
         }
@@ -74,21 +75,24 @@ public class UserController {
         return UserResult.success(user , "变更账户状态成功！");
     }
 
-    @PostMapping("/classSelect/classUserList")//前台搜索班级班级同学列表
-    public List<User>  classSelectUserList(@RequestParam String umajor , @RequestParam int grade , @RequestParam int uclass){
-        List<User> userList = userService.classListService(umajor , grade , uclass);
-        return userList;
+    @PostMapping("/classSelect/classUserList")//前台搜索班级班级同学列表,前台多判断在不在这个班级中
+    public List<uClass>  classSelectUserList(@RequestParam long uid , @RequestParam String umajor , @RequestParam String grade , @RequestParam String uclass){
+        int count = userService.classCountService(umajor , grade , uclass);
+        boolean inOrNot = userService.classUserInOrNotService(umajor , grade, uclass , uid);
+        List<uClass> userList = userService.classListService(umajor , grade , uclass);
+        return userList;//后面改成返回学号姓名
     }
 
     @PostMapping("/classSelect/classUserList/join")//前台加入班级
-    public UserResult<User>  classSelectJoin(@RequestParam String uname , @RequestParam String realname , @RequestParam String sno){
-        User user = userService.classJoinService(uname , realname , sno);
-        return UserResult.success(user , "加入班级成功！");
+    public int classSelectJoin(@RequestParam String umajor ,@RequestParam String grade ,@RequestParam String uclass , @RequestParam long uid , @RequestParam String sno , @RequestParam String realname){
+        int classUser= userService.classJoinService(umajor , grade , uclass , uid , sno , realname);
+        return classUser;
     }
     @PostMapping("/manager/classUserList")//后台班级管理班级同学列表
-    public List<User>  managerClassUserList(@RequestParam String umajor , @RequestParam int grade , @RequestParam int uclass){
-        List<User> userList = userService.classListService(umajor , grade , uclass);
-        return userList;
+    public List<uClass>  managerClassUserList(@RequestParam String umajor , @RequestParam String grade , @RequestParam String uclass){
+        int count = userService.classCountService(umajor , grade , uclass);
+        List<uClass> userList = userService.classListService(umajor , grade , uclass);
+        return userList;//后面改成返回学号和姓名
     }
     @PostMapping("manager/classUserList/out")//后台班级管理踢出成员
     public UserResult<User> managerClassUserOut(@RequestParam String sno){
