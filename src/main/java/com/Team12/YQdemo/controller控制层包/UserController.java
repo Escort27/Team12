@@ -7,14 +7,16 @@ import com.Team12.YQdemo.utils存放工具类.UserResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
     @Resource
     private UserService userService;
-
     @PostMapping("/login")
     public UserResult<User> loginController(@RequestParam String uname, @RequestParam String password){
         User user = userService.loginService(uname, password);
@@ -76,11 +78,75 @@ public class UserController {
     }
 
     @PostMapping("/classSelect/classUserList")//前台搜索班级班级同学列表,前台多判断在不在这个班级中
-    public List<uClass>  classSelectUserList(@RequestParam long uid , @RequestParam String umajor , @RequestParam String grade , @RequestParam String uclass){
-        int count = userService.classCountService(umajor , grade , uclass);
+    public Map<String , String>  classSelectUserList(@RequestParam long uid , @RequestParam String umajor , @RequestParam String grade , @RequestParam String uclass){
         boolean inOrNot = userService.classUserInOrNotService(umajor , grade, uclass , uid);
         List<uClass> userList = userService.classListService(umajor , grade , uclass);
-        return userList;//后面改成返回学号姓名
+        Map<String , String> result = new Map<String, String>() {
+            @Override
+            public int size() {
+                return 0;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return false;
+            }
+
+            @Override
+            public boolean containsKey(Object key) {
+                return false;
+            }
+
+            @Override
+            public boolean containsValue(Object value) {
+                return false;
+            }
+
+            @Override
+            public String get(Object key) {
+                return null;
+            }
+
+            @Override
+            public String put(String key, String value) {
+                return null;
+            }
+
+            @Override
+            public String remove(Object key) {
+                return null;
+            }
+
+            @Override
+            public void putAll(Map<? extends String, ? extends String> m) {
+
+            }
+
+            @Override
+            public void clear() {
+
+            }
+
+            @Override
+            public Set<String> keySet() {
+                return null;
+            }
+
+            @Override
+            public Collection<String> values() {
+                return null;
+            }
+
+            @Override
+            public Set<Entry<String, String>> entrySet() {
+                return null;
+            }
+        };
+        result.put("count" , Integer.toString(userList.size()));
+        for(int i=0;i<userList.size();i++){
+            result.put(userList.get(i).getSno() , userList.get(i).getRealname());
+        }
+        return result;//返回学生个数接着是学号姓名
     }
 
     @PostMapping("/classSelect/classUserList/join")//前台加入班级
@@ -89,10 +155,74 @@ public class UserController {
         return classUser;
     }
     @PostMapping("/manager/classUserList")//后台班级管理班级同学列表
-    public List<uClass>  managerClassUserList(@RequestParam String umajor , @RequestParam String grade , @RequestParam String uclass){
-        int count = userService.classCountService(umajor , grade , uclass);
+    public Map<String , String>  managerClassUserList(@RequestParam String umajor , @RequestParam String grade , @RequestParam String uclass){
         List<uClass> userList = userService.classListService(umajor , grade , uclass);
-        return userList;//后面改成返回学号和姓名
+        Map<String , String> result = new Map<String, String>() {
+            @Override
+            public int size() {
+                return 0;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return false;
+            }
+
+            @Override
+            public boolean containsKey(Object key) {
+                return false;
+            }
+
+            @Override
+            public boolean containsValue(Object value) {
+                return false;
+            }
+
+            @Override
+            public String get(Object key) {
+                return null;
+            }
+
+            @Override
+            public String put(String key, String value) {
+                return null;
+            }
+
+            @Override
+            public String remove(Object key) {
+                return null;
+            }
+
+            @Override
+            public void putAll(Map<? extends String, ? extends String> m) {
+
+            }
+
+            @Override
+            public void clear() {
+
+            }
+
+            @Override
+            public Set<String> keySet() {
+                return null;
+            }
+
+            @Override
+            public Collection<String> values() {
+                return null;
+            }
+
+            @Override
+            public Set<Entry<String, String>> entrySet() {
+                return null;
+            }
+        };
+        result.put("count" , Integer.toString(userList.size()));
+        for(int i=0;i<userList.size();i++){
+            result.put(userList.get(i).getSno() , userList.get(i).getRealname());
+        }
+        return result;//返回学生个数接着是学号姓名
     }
     @PostMapping("manager/classUserList/out")//后台班级管理踢出成员
     public UserResult<User> managerClassUserOut(@RequestParam String sno){

@@ -96,11 +96,6 @@ public class UserServiceImpl implements UserService {
         return user;
     }
     @Override
-    public int classCountService(String umajor , String grade , String uclass) {
-        List<uClass> classUserList = classDao.findAllByUmajorAndGradeAndUclass(umajor , grade , uclass );
-        return classUserList.size();
-    }
-    @Override
     public boolean classUserInOrNotService(String umajor , String grade , String uclass , long uid) {
         if(classDao.findAllByUmajorAndGradeAndUclassAndUid(umajor,grade,uclass,uid)!=null){
             return true;//在班级中

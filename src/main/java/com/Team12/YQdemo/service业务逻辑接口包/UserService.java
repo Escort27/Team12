@@ -17,8 +17,6 @@ public interface UserService {
 
     User banUserService(String uname , boolean ban);//后台封禁解封账号
 
-    int classCountService(String umajor , String grade , String uclass);//返回班级中同学的个数
-
     boolean classUserInOrNotService(String umajor , String grade , String uclass , long uid);
     List<uClass> classListService(String umajor , String grade , String uclass);//返回班级同学列表（前后台共用）
 
