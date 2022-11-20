@@ -1,10 +1,13 @@
 package com.example.team12.service.Impl;
 
+import com.example.team12.bean.fzumap;
 import com.example.team12.dao.FzuMapper;
 import com.example.team12.service.FzuService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author cr
@@ -19,13 +22,13 @@ public class FzuServiceImpl implements FzuService {
     private FzuMapper fzuMapper;
 
     @Override
-    public String user_show(String address) {
+    public List<fzumap> user_show() {
 
-        return  fzuMapper.user_show(address);
+        return  fzuMapper.user_show();
     }
 
     @Override
-    public int updatedate(String address,String activity_name) {
-        return fzuMapper.updatedate(address,activity_name);
+    public void updatedate(Map map) {
+         fzuMapper.updatedate((String)map.get("address"),(String) map.get("activity_name"));
     }
 }

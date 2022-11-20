@@ -1,6 +1,12 @@
 package com.example.team12.dao;
 
+import com.example.team12.bean.fzumap;
 import org.apache.ibatis.annotations.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author cr
@@ -9,9 +15,9 @@ import org.apache.ibatis.annotations.*;
  */
 @Mapper
 public interface FzuMapper {
-    @Select("select activity_name from fzumap where address = #{address}")
-    String user_show(@Param("address")String address);
+    @Select("select * from fzumap")//用户根据地点显示相应活动
+    List<fzumap>user_show();
 
-    @Update("update fzumap set activity_name = #{activity_name} where address=#{address}")
-    int updatedate(@Param("address")String address,@Param("activity_name")String activity_name);
+    @Update("update fzumap set activity_name = #{activity_name} where address=#{address}")//管理员端选择地址修改对应地址的活动
+    void updatedate(@RequestParam("address") String address,@RequestParam("activity_name") String activity_name);
 }
