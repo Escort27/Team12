@@ -1,7 +1,9 @@
 package com.Team12.YQdemo.service业务逻辑接口包.serviceImpl业务逻辑实现包;
 
 import com.Team12.YQdemo.domain实体类包.User;
+import com.Team12.YQdemo.domain实体类包.uClass;
 import com.Team12.YQdemo.repository数据访问层包或叫dao包.UserDao;
+import com.Team12.YQdemo.repository数据访问层包或叫dao包.ClassDao;
 import com.Team12.YQdemo.service业务逻辑接口包.UserService;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,9 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Resource
     private UserDao userDao;
+    @Resource
+    private ClassDao classDao;
+
 
     @Override
     public User loginService(String uname, String password) {
@@ -37,8 +42,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User changePasswordService(String uname , String oldPassword , String newPassword) {
-        User user = userDao.findByUname(uname);
+    public User changePasswordService(long uid , String oldPassword , String newPassword) {
+        User user = userDao.findByUid(uid);
         //比对输入的旧密码是否匹配
         if(user.getPassword().equals(oldPassword)){
             user.setPassword(newPassword);
@@ -51,14 +56,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User changeInformationService(String uname , int newYear , String newMajor , int newClass , String newNickname ){
-        User user = userDao.findByUname(uname);
+    public User changeInformationService(long uid , String newYear , String newMajor , String newClass , String newNickname ){
+        User user = userDao.findByUid(uid);
         boolean flag = false;//有一项修改了，信息就有改变，传过来的数据有用并且和源数据不一样，才修改
         if(!newNickname.equals("") && !user.getNickname().equals(newNickname)) {
                 user.setNickname(newNickname);
                 flag =true;
         }
-        if(newYear != 0 && user.getGrade()!=newYear){
+        if(!newYear.equals("") && user.getGrade().equals(newYear)){
             user.setGrade(newYear);
             flag =true;
         }
@@ -66,7 +71,7 @@ public class UserServiceImpl implements UserService {
             user.setUmajor(newMajor);
             flag =true;
         }
-        if(newClass != 0 && user.getUclass()!=newClass){
+        if(!newClass.equals("") && user.getUclass().equals(newClass)){
             user.setUclass(newClass);
             flag =true;
         }
@@ -91,18 +96,33 @@ public class UserServiceImpl implements UserService {
         return user;
     }
     @Override
-    public List<User> classListService(String umajor , int grade , int uclass) {
-        List<User> classUserList = userDao.findAllByUmajorAndGradeAndUclassAndInclass(umajor , grade , uclass , true);
-        return classUserList;
+    public boolean classUserInOrNotService(String umajor , String grade , String uclass , long uid) {
+        if(classDao.findAllByUmajorAndGradeAndUclassAndUid(umajor,grade,uclass,uid)!=null){
+            return true;//在班级中
+        }
+        else{
+            return false;//不在班级中
+        }
     }
     @Override
-    public User classJoinService(String uname , String realname , String sno) {
-        User user = userDao.findByUname(uname);
+    public List<uClass> classListService(String umajor , String grade , String uclass) {
+        List<uClass> ClassUserList = classDao.findAllByUmajorAndGradeAndUclass(umajor , grade , uclass );
+        return ClassUserList;
+    }
+    @Override
+    public int classJoinService(String umajor , String grade , String uclass , long uid , String sno , String realname) {
+        User user = userDao.findByUid(uid);
+        if(userDao.findBySno(sno)==null) {
+            user.setSno(sno);
+        }
+        else{
+            return 1;//学号已经存在
+        }
         user.setRealname(realname);
-        user.setSno(sno);
-        user.setInclass(true);
         userDao.save(user);
-        return user;
+        uClass classUser = new uClass(umajor , grade , uclass , uid , sno , realname);
+        classDao.save(classUser);
+        return 0;//加入成功
     }
     @Override
     public User classOutService(String sno) {

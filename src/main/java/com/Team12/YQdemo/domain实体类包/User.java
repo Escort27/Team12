@@ -17,11 +17,12 @@ public class User {
 
     private String nickname;
 
-    private int grade;
+    private String grade;
 
     private String umajor;
 
-    private int uclass;
+
+    private String uclass;
 
     private Boolean baned;
 
@@ -36,6 +37,8 @@ public class User {
     public String getSno() {
         return sno;
     }
+
+    public User(){}
 
     public void setSno(String sno) {
         this.sno = sno;
@@ -106,13 +109,6 @@ public class User {
         this.nickname = nickname;
     }
 
-    public int getGrade() {
-        return grade;
-    }
-
-    public void setGrade(int yearOfGraduate) {
-        this.grade = yearOfGraduate;
-    }
 
     public String getUmajor() {
         return umajor;
@@ -122,11 +118,20 @@ public class User {
         this.umajor = umajor;
     }
 
-    public int getUclass() {
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+
+    public String getUclass() {
         return uclass;
     }
 
-    public void setUclass(int uclass) {
+    public void setUclass(String uclass) {
         this.uclass = uclass;
     }
 }
