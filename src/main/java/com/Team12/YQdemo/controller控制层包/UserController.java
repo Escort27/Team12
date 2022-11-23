@@ -20,17 +20,17 @@ public class UserController {
     @Resource
     private UserService userService;
     @PostMapping("/login")
-    public long loginController(@RequestParam String uname, @RequestParam String password){
+    public UserResult<User> loginController(@RequestParam String uname, @RequestParam String password){
         User user = userService.loginService(uname, password);
         if(user!=null){
             if(user.getBaned() == true){
-                return 2;//账号已被封禁
+                return UserResult.error("2","账号已被封禁!");
             }
             else{
-                return user.getUid();//登录成功
+                return UserResult.success(user , "登陆成功!");//登录成功
             }
         }else{
-            return 1;//账号或密码错误
+            return UserResult.error("1","用户未注册或账号密码错误！");
         }
     }
 
@@ -55,17 +55,17 @@ public class UserController {
         }
     }
 
-    @PostMapping("/information")
-    public LinkedHashMap<String , String> informationService(@RequestParam long uid){
-        User user = userService.informationService(uid);
-        LinkedHashMap<String , String> result = new LinkedHashMap<>();
-        result.put("nickname" , user.getNickname());
-        result.put("uname" , user.getUname());
-        result.put("grade" , user.getGrade());
-        result.put("umajor" , user.getUmajor());
-        result.put("uclass" , user.getUclass());
-        return result;
-    }
+//    @PostMapping("/information")
+//    public LinkedHashMap<String , String> informationService(@RequestParam long uid){
+//        User user = userService.informationService(uid);
+//        LinkedHashMap<String , String> result = new LinkedHashMap<>();
+//        result.put("nickname" , user.getNickname());
+//        result.put("uname" , user.getUname());
+//        result.put("grade" , user.getGrade());
+//        result.put("umajor" , user.getUmajor());
+//        result.put("uclass" , user.getUclass());
+//        return result;
+//    }
 
 
     @PostMapping("/changeInformation")
