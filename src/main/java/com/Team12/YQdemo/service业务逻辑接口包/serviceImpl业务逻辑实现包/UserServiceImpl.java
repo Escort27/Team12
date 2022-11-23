@@ -137,4 +137,10 @@ public class UserServiceImpl implements UserService {
         userDao.save(user);
         return user;
     }
+
+    @Override
+    public User informationService(long uid){
+        User user = userDao.findByUid(uid);
+        return user;
+    }
 }

@@ -11,6 +11,8 @@ public interface UserService {
 
     User changePasswordService(long uid , String oldPassword , String newPassword);//修改密码
 
+    User informationService(long uid);
+
     User changeInformationService(long uid , String newYear , String newMajor , String newClass , String newNickname );//修改资料
 
     List<User> userListService();//后台返回账号列表
