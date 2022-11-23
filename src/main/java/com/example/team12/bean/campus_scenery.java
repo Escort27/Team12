@@ -3,6 +3,7 @@ package com.example.team12.bean;
 public class campus_scenery {
     String pic_url;
     int thumbs_up;
+    int flag;
 
     public String getPic_url() {
         return pic_url;
@@ -20,8 +21,17 @@ public class campus_scenery {
         this.thumbs_up = thumbs_up;
     }
 
-    public campus_scenery(String pic_url, int thumbs_up) {
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public campus_scenery(String pic_url, int thumbs_up, int flag) {
         this.pic_url = pic_url;
         this.thumbs_up = thumbs_up;
+        this.flag = flag;
     }
 }

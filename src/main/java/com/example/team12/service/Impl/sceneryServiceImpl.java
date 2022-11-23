@@ -1,5 +1,6 @@
 package com.example.team12.service.Impl;
 
+import com.example.team12.bean.campus_scenery;
 import com.example.team12.dao.sceneryMapper;
 import com.example.team12.service.sceneryService;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,13 @@ public class sceneryServiceImpl implements sceneryService {
     @Resource
     private sceneryMapper scenerymapper;
     @Override
-    public List<String> refresh_five() {
+    public List<campus_scenery> refresh_five() {
         return scenerymapper.refresh_five();
+    }
+
+    @Override
+    public List<campus_scenery> refresh_all(){
+        return scenerymapper.refresh_all();
     }
 
     @Override
@@ -25,7 +31,7 @@ public class sceneryServiceImpl implements sceneryService {
 
     @Override
     public int give_a_like(Map map) {
-        return scenerymapper.give_a_like((String) map.get("pic_url"));
+        return scenerymapper.give_a_like((String) map.get("pic_url"),(int) map.get("thumbs_up"));
     }
 
     @Override
