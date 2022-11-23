@@ -2,12 +2,14 @@ package com.Team12.YQdemo.service业务逻辑接口包.serviceImpl业务逻辑�
 
 import com.Team12.YQdemo.domain实体类包.User;
 import com.Team12.YQdemo.domain实体类包.uClass;
-import com.Team12.YQdemo.repository数据访问层包或叫dao包.UserDao;
 import com.Team12.YQdemo.repository数据访问层包或叫dao包.ClassDao;
+import com.Team12.YQdemo.repository数据访问层包或叫dao包.UserDao;
 import com.Team12.YQdemo.service业务逻辑接口包.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,17 +27,21 @@ public class UserServiceImpl implements UserService {
         return user;
     }
     @Override
-    public User registService(User user) {
+    public User registService(String uname , String nickname , String password , String grade , String umajor , String uclass) {
         //当新用户用户名已存在时
-        if(userDao.findByUname(user.getUname())!=null){
+        if(userDao.findByUname(uname)!=null){
             // 无法注册
             return null;
         }
         else{
             //返回创建好的用户对象
             //发现数据库中baned设置默认值0，用户注册完，baned的值为null，并没有设置为0,所以加上下面语句
+            User user = new User(uname,nickname,password,grade,umajor,uclass);
             user.setBaned(false);//新注册用户肯定没有给封禁
             user.setInclass(false);//新注册用户肯定没有加入班级组织
+            SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date(System.currentTimeMillis());
+            user.setCreatetime(formatter.format(date));
             User newUser = userDao.save(user);
             return newUser;
         }
@@ -96,12 +102,12 @@ public class UserServiceImpl implements UserService {
         return user;
     }
     @Override
-    public boolean classUserInOrNotService(String umajor , String grade , String uclass , long uid) {
+    public String classUserInOrNotService(String umajor , String grade , String uclass , long uid) {
         if(classDao.findAllByUmajorAndGradeAndUclassAndUid(umajor,grade,uclass,uid)!=null){
-            return true;//在班级中
+            return "1";//在班级中
         }
         else{
-            return false;//不在班级中
+            return "0";//不在班级中
         }
     }
     @Override

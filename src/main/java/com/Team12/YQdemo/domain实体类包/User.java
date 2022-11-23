@@ -34,11 +34,23 @@ public class User {
 
     private String realname;
 
+    private String createtime;
+
+    public User(){}
+
+    public User(String uname , String nickname , String password , String grade , String umajor , String uclass){
+        this.uname=uname;
+        this.nickname=nickname;
+        this.password=password;
+        this.grade=grade;
+        this.umajor=umajor;
+        this.uclass=uclass;
+    }
+
     public String getSno() {
         return sno;
     }
 
-    public User(){}
 
     public void setSno(String sno) {
         this.sno = sno;
@@ -134,4 +146,13 @@ public class User {
     public void setUclass(String uclass) {
         this.uclass = uclass;
     }
+
+    public String getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(String creattime) {
+        this.createtime = creattime;
+    }
+
 }
