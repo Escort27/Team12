@@ -95,11 +95,10 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
     @Override
-    public User banUserService(String uname , boolean ban) {
+    public void banUserService(String uname , boolean ban) {
         User user = userDao.findByUname(uname);
         user.setBaned(ban);
         userDao.save(user);
-        return user;
     }
     @Override
     public String classUserInOrNotService(String umajor , String grade , String uclass , long uid) {
@@ -116,31 +115,32 @@ public class UserServiceImpl implements UserService {
         return ClassUserList;
     }
     @Override
-    public int classJoinService(String umajor , String grade , String uclass , long uid , String sno , String realname) {
+    public boolean classJoinService(String umajor , String grade , String uclass , long uid , String sno , String realname) {
         User user = userDao.findByUid(uid);
         if(userDao.findBySno(sno)==null) {
             user.setSno(sno);
         }
         else{
-            return 1;//学号已经存在
+            if(uid!=userDao.findBySno(sno).getUid()){
+                return false;//学号已经存在
+            }
         }
         user.setRealname(realname);
         userDao.save(user);
         uClass classUser = new uClass(umajor , grade , uclass , uid , sno , realname);
         classDao.save(classUser);
-        return 0;//加入成功
+        return true;//加入成功
     }
     @Override
-    public User classOutService(String sno) {
+    public void classOutService(String sno) {
         User user = userDao.findBySno(sno);
         user.setInclass(false);
         userDao.save(user);
-        return user;
     }
 
     @Override
-    public User informationService(long uid){
-        User user = userDao.findByUid(uid);
+    public User informationService(String sno){
+        User user = userDao.findBySno(sno);
         return user;
     }
 }

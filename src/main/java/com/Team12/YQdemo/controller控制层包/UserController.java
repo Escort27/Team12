@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Vector;
@@ -35,47 +36,47 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public int registController(@RequestParam String uname ,@RequestParam String nickname ,@RequestParam String password ,@RequestParam String grade ,@RequestParam String umajor ,@RequestParam String uclass){
+    public HashMap<Integer , String> registController(@RequestParam String uname , @RequestParam String nickname , @RequestParam String password , @RequestParam String grade , @RequestParam String umajor , @RequestParam String uclass){
         User user = userService.registService(uname , nickname , password , grade , umajor , uclass);
         if(user!=null){
-            return 0;//注册成功
-        }else{
-            return 1;//用户已经存在
+            HashMap<Integer , String> result = new HashMap<>();
+            result.put(0 , "注册成功！");
+            return result;
+        }
+        else{
+            HashMap<Integer , String> result = new HashMap<>();
+            result.put(1 , "用户已存在！");
+            return result;
         }
     }
 
     @PostMapping("/changePassword")
-    public int changePasswordController(@RequestParam long uid , @RequestParam String oldPassword , @RequestParam String newPassword){
+    public HashMap<Integer , String> changePasswordController(@RequestParam long uid , @RequestParam String oldPassword , @RequestParam String newPassword){
         User user = userService.changePasswordService(uid , oldPassword , newPassword);
         if(user!=null){
-            return 0;//更改密码成功
+            HashMap<Integer , String> result = new HashMap<>();
+            result.put(0 , "更改密码成功！");
+            return result;
         }
         else{
-            return 1;//旧密码不匹配
+            HashMap<Integer , String> result = new HashMap<>();
+            result.put(1 , "旧密码不匹配！");
+            return result;
         }
     }
 
-//    @PostMapping("/information")
-//    public LinkedHashMap<String , String> informationService(@RequestParam long uid){
-//        User user = userService.informationService(uid);
-//        LinkedHashMap<String , String> result = new LinkedHashMap<>();
-//        result.put("nickname" , user.getNickname());
-//        result.put("uname" , user.getUname());
-//        result.put("grade" , user.getGrade());
-//        result.put("umajor" , user.getUmajor());
-//        result.put("uclass" , user.getUclass());
-//        return result;
-//    }
-
-
     @PostMapping("/changeInformation")
-    public UserResult<User> changeInformationService(@RequestParam long uid , @RequestParam String newYear , @RequestParam String newMajor , @RequestParam String newClass , @RequestParam String newNickname){
+    public HashMap<Integer , String> changeInformationService(@RequestParam long uid , @RequestParam String newYear , @RequestParam String newMajor , @RequestParam String newClass , @RequestParam String newNickname){
         User user = userService.changeInformationService(uid , newYear , newMajor , newClass , newNickname);
         if(user!=null){
-            return UserResult.success(user,"修改资料成功！");
+            HashMap<Integer , String> result = new HashMap<>();
+            result.put(0 , "修改资料成功！");
+            return result;
         }
         else{
-            return UserResult.error("1","资料没有变更！");
+            HashMap<Integer , String> result = new HashMap<>();
+            result.put(0 , "资料没有变更！");
+            return result;
         }
     }
     @PostMapping("/users")//后台管理账户列表
@@ -100,9 +101,11 @@ public class UserController {
     }
 
     @PostMapping("/users/ban")//后台封禁用户
-    public int banUserService(@RequestParam String uname , @RequestParam boolean ban){
-        User user = userService.banUserService(uname , ban);
-        return 0;//更改成功
+    public HashMap<Integer , String> banUserService(@RequestParam String uname , @RequestParam boolean ban){
+        userService.banUserService(uname , ban);
+        HashMap<Integer , String> result = new HashMap<>();
+        result.put(0 , "更改用户状态成功！");
+        return result;
     }
 
     @PostMapping("/classSelect/classUserList")//前台搜索班级班级同学列表,前台多判断在不在这个班级中
@@ -118,10 +121,31 @@ public class UserController {
         return result;//返回该学生在不在班级里,学生个数,学号姓名
     }
 
+    @PostMapping("/classSelect/classUserList/information")
+    public LinkedHashMap<String , String> informationService(@RequestParam String sno){
+        User user = userService.informationService(sno);
+        LinkedHashMap<String , String> result = new LinkedHashMap<>();
+        result.put("nickname" , user.getNickname());
+        result.put("uname" , user.getUname());
+        result.put("grade" , user.getGrade());
+        result.put("umajor" , user.getUmajor());
+        result.put("uclass" , user.getUclass());
+        return result;
+    }
+
     @PostMapping("/classSelect/classUserList/join")//前台加入班级
-    public int classSelectJoin(@RequestParam String umajor ,@RequestParam String grade ,@RequestParam String uclass , @RequestParam long uid , @RequestParam String sno , @RequestParam String realname){
-        int classUser= userService.classJoinService(umajor , grade , uclass , uid , sno , realname);
-        return classUser;
+    public HashMap<Integer , String> classSelectJoin(@RequestParam String umajor ,@RequestParam String grade ,@RequestParam String uclass , @RequestParam long uid , @RequestParam String sno , @RequestParam String realname){
+        boolean classUser= userService.classJoinService(umajor , grade , uclass , uid , sno , realname);
+        if(classUser==true){
+            HashMap<Integer , String> result = new HashMap<>();
+            result.put(0 , "加入班级成功！");
+            return result;
+        }
+        else{
+            HashMap<Integer , String> result = new HashMap<>();
+            result.put(1 , "学号已经存在！");
+            return result;
+        }
     }
 
     @PostMapping("/manager/classUserList")//后台班级管理班级同学列表
@@ -136,8 +160,10 @@ public class UserController {
     }
 
     @PostMapping("manager/classUserList/out")//后台班级管理踢出成员
-    public String  managerClassUserOut(@RequestParam String sno){
-        User user =userService.classOutService(sno);
-        return "提出成员成功！";
+    public HashMap<Integer , String> managerClassUserOut(@RequestParam String sno){
+        userService.classOutService(sno);
+        HashMap<Integer , String> result = new HashMap<>();
+        result.put(0 , "已将该用户踢出班级！");
+        return result;
     }
 }
