@@ -63,15 +63,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User changeInformationService(long uid , String newYear , String newMajor , String newClass , String newNickname , String newAvatar){
+    public User changeInformationService(long uid , String newGrade , String newMajor , String newClass , String newNickname , String newAvatar){
         User user = userDao.findByUid(uid);
         boolean flag = false;//有一项修改了，信息就有改变，传过来的数据有用并且和源数据不一样，才修改
         if(!newNickname.equals("") && !user.getNickname().equals(newNickname)) {
                 user.setNickname(newNickname);
                 flag = true;
         }
-        if(!newYear.equals("") && !user.getGrade().equals(newYear)){
-            user.setGrade(newYear);
+        if(!newGrade.equals("") && !user.getGrade().equals(newGrade)){
+            user.setGrade(newGrade);
             flag = true;
         }
         if(!newMajor.equals("") && !user.getUmajor().equals(newMajor)){

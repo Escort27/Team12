@@ -27,7 +27,7 @@ public class UserController {
                 return UserResult.error("2","账号已被封禁!");
             }
             else{
-                return UserResult.success(user , "登陆成功!");//登录成功
+                return UserResult.success(user , "登录成功!");//登录成功
             }
         }else{
             return UserResult.error("1","用户未注册或账号密码错误！");
@@ -77,7 +77,7 @@ public class UserController {
     }
 
     @PostMapping("/changeInformation")
-    public HashMap<String , String> changeInformationService(@RequestBody HashMap<String , String> map){
+    public HashMap<String , String> changeInformationController(@RequestBody HashMap<String , String> map){
         String uid , newGrade , newMajor , newClass , newNickname , newAvatar;
         uid = map.get("uid");
         newGrade = map.get("newGrade");
@@ -99,7 +99,7 @@ public class UserController {
         }
     }
     @PostMapping("/users")//后台管理账户列表
-    public LinkedHashMap<String , String> userListService(@RequestBody HashMap<String , Integer> map){
+    public LinkedHashMap<String , String> userListController(@RequestBody HashMap<String , Integer> map){
         int page = map.get("page");
         List<User> userList = userService.userListService();
         LinkedHashMap<String , String> result = new LinkedHashMap<>();
@@ -122,7 +122,7 @@ public class UserController {
     }
 
     @PostMapping("/users/ban")//后台封禁用户
-    public HashMap<String  , String> banUserService(@RequestBody HashMap<String , String> map){
+    public HashMap<String  , String> banUserController(@RequestBody HashMap<String , String> map){
         String uname,ban;
         uname = map.get("uname");
         ban = map.get("ban");//ban的值为"true"或"false"
@@ -133,7 +133,7 @@ public class UserController {
     }
 
     @PostMapping("/classSelect/classUserList")//前台搜索班级班级同学列表,前台多判断在不在这个班级中
-    public LinkedHashMap<String , String> classSelectUserList(@RequestBody HashMap<String , String> map){
+    public LinkedHashMap<String , String> classSelectUserListController(@RequestBody HashMap<String , String> map){
         String uid = map.get("uid");
         String umajor = map.get("umajor");
         String grade = map.get("grade");
@@ -153,7 +153,7 @@ public class UserController {
     }
 
     @PostMapping("/classSelect/classUserList/information")
-    public LinkedHashMap<String , String> informationService(@RequestBody HashMap<String , String> map){
+    public LinkedHashMap<String , String> informationServiceController(@RequestBody HashMap<String , String> map){
         String sno = map.get("sno");
         User user = userService.informationService(sno);
         LinkedHashMap<String , String> result = new LinkedHashMap<>();
@@ -167,7 +167,7 @@ public class UserController {
     }
 
     @PostMapping("/classSelect/classUserList/join")//前台加入班级
-    public HashMap<String , String> classSelectJoin(@RequestBody HashMap<String , String> map){
+    public HashMap<String , String> classSelectJoinController(@RequestBody HashMap<String , String> map){
         String umajor ,grade , uclass , uid , sno , realname;
         umajor = map.get("umajor");
         uclass = map.get("uclass");
@@ -190,7 +190,7 @@ public class UserController {
     }
 
     @PostMapping("/manager/classUserList")//后台班级管理班级同学列表
-    public LinkedHashMap<String , String>  managerClassUserList(@RequestBody HashMap<String , String> map){
+    public LinkedHashMap<String , String>  managerClassUserListController(@RequestBody HashMap<String , String> map){
         String umajor , grade , uclass;
         umajor = map.get("umajor");
         grade = map.get("grade");
@@ -205,7 +205,7 @@ public class UserController {
     }
 
     @PostMapping("manager/classUserList/out")//后台班级管理踢出成员
-    public HashMap<String , String> managerClassUserOut(@RequestBody HashMap<String , String> map){
+    public HashMap<String , String> managerClassUserOutController(@RequestBody HashMap<String , String> map){
         String sno = map.get("sno");
         userService.classOutService(sno);
         HashMap<String , String> result = new HashMap<>();
