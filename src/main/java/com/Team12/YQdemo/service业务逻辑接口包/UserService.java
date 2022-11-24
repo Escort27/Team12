@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface UserService {
 
+    User findSomeone(long uid);//查找某人
     User loginService(String uname, String password);//登录
 
     User registService(String uname , String nickname , String password , String grade , String umajor , String uclass);//注册
@@ -13,7 +14,7 @@ public interface UserService {
 
     User informationService(String sno);
 
-    User changeInformationService(long uid , String newYear , String newMajor , String newClass , String newNickname );//修改资料
+    User changeInformationService(long uid , String newYear , String newMajor , String newClass , String newNickname , String newAvatar);//修改资料
 
     List<User> userListService();//后台返回账号列表
 
@@ -25,4 +26,6 @@ public interface UserService {
     boolean classJoinService(String umajor , String grade , String uclass , long uid , String sno , String realname);//加入班级
 
     void classOutService (String sno);//后台踢出班级成员
+
+
 }

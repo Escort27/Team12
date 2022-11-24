@@ -4,16 +4,12 @@ import com.Team12.YQdemo.domain实体类包.User;
 import com.Team12.YQdemo.domain实体类包.uClass;
 import com.Team12.YQdemo.service业务逻辑接口包.UserService;
 import com.Team12.YQdemo.utils存放工具类.UserResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Vector;
 
 @RestController
 @RequestMapping("/user")
@@ -51,8 +47,9 @@ public class UserController {
     }
 
     @PostMapping("/changePassword")
-    public HashMap<Integer , String> changePasswordController(@RequestParam long uid , @RequestParam String oldPassword , @RequestParam String newPassword){
-        User user = userService.changePasswordService(uid , oldPassword , newPassword);
+    public HashMap<Integer , String> changePasswordController(@RequestParam String uid , @RequestParam String oldPassword , @RequestParam String newPassword){
+        long id = Long.parseLong(uid);
+        User user = userService.changePasswordService(id , oldPassword , newPassword);
         if(user!=null){
             HashMap<Integer , String> result = new HashMap<>();
             result.put(0 , "更改密码成功！");
@@ -66,8 +63,9 @@ public class UserController {
     }
 
     @PostMapping("/changeInformation")
-    public HashMap<Integer , String> changeInformationService(@RequestParam long uid , @RequestParam String newYear , @RequestParam String newMajor , @RequestParam String newClass , @RequestParam String newNickname){
-        User user = userService.changeInformationService(uid , newYear , newMajor , newClass , newNickname);
+    public HashMap<Integer , String> changeInformationService(@RequestParam String uid , @RequestParam String newYear , @RequestParam String newMajor , @RequestParam String newClass , @RequestParam String newNickname , @RequestParam String newAvatar){
+        long id = Long.parseLong(uid);
+        User user = userService.changeInformationService(id , newYear , newMajor , newClass , newNickname , newAvatar);
         if(user!=null){
             HashMap<Integer , String> result = new HashMap<>();
             result.put(0 , "修改资料成功！");
@@ -80,22 +78,23 @@ public class UserController {
         }
     }
     @PostMapping("/users")//后台管理账户列表
-    public LinkedHashMap<Long , Vector<String>> userListService(@RequestParam int page){
+    public LinkedHashMap<String , String> userListService(@RequestParam int page){
         List<User> userList = userService.userListService();
-        LinkedHashMap<Long , Vector<String>> result = new LinkedHashMap<>();
-        for(int i=(page-1)*8;i<(page*8)&&i<userList.size();i++){
-            Vector<String> info = new Vector<>();
-            info.add(userList.get(i).getUname());
-            info.add(userList.get(i).getNickname());
-            info.add(userList.get(i).getGrade());
-            info.add(userList.get(i).getUmajor()+userList.get(i).getUclass()+"班");
+        LinkedHashMap<String , String> result = new LinkedHashMap<>();
+        for(int i=(page-1)*8,j=0;i<(page*8)&&i<userList.size();i++,j++){
+            j=j%8;
+            result.put("uid"+j , Long.toString(userList.get(i).getUid()));
+            result.put("uname"+j , userList.get(i).getUname());
+            result.put("nickname"+j , userList.get(i).getNickname());
+            result.put("grade"+j , userList.get(i).getGrade());
+            result.put("umajor"+j , userList.get(i).getUmajor());
+            result.put("uclass"+j , userList.get(i).getUclass());
             if(userList.get(i).getBaned() == true){
-                info.add("封禁中");
+                result.put("ban"+j , "封禁中");
             }
             else{
-                info.add("正常");
+                result.put("ban"+j , "正常");
             }
-            result.put(userList.get(i).getUid() , info);
         }
         return result;
     }
@@ -109,14 +108,21 @@ public class UserController {
     }
 
     @PostMapping("/classSelect/classUserList")//前台搜索班级班级同学列表,前台多判断在不在这个班级中
-    public LinkedHashMap<String , String> classSelectUserList(@RequestParam long uid , @RequestParam String umajor , @RequestParam String grade , @RequestParam String uclass){
-        String inOrNot = userService.classUserInOrNotService(umajor , grade, uclass , uid);
+    public LinkedHashMap<String , String> classSelectUserList(@RequestBody HashMap<String , String> map){
+        String uid = map.get("uid");
+        String umajor = map.get("umajor");
+        String grade = map.get("grade");
+        String uclass = map.get("uclass");
+        long id = Long.parseLong(uid);
+        String inOrNot = userService.classUserInOrNotService(umajor , grade, uclass , id);
         List<uClass> userList = userService.classListService(umajor , grade , uclass);
         LinkedHashMap<String , String> result = new LinkedHashMap<>();
         result.put("inOrNot" , inOrNot);
         result.put("count" , Integer.toString(userList.size()));
         for(int i=0;i<userList.size();i++){
-            result.put(  userList.get(i).getSno(), userList.get(i).getRealname());
+            result.put("sno"+i , userList.get(i).getSno());
+            result.put("realname"+i  , userList.get(i).getRealname());
+            result.put("avatar"+i , userService.findSomeone(userList.get(i).getUid()).getAvatar());
         }
         return result;//返回该学生在不在班级里,学生个数,学号姓名
     }
@@ -125,6 +131,7 @@ public class UserController {
     public LinkedHashMap<String , String> informationService(@RequestParam String sno){
         User user = userService.informationService(sno);
         LinkedHashMap<String , String> result = new LinkedHashMap<>();
+        result.put("avatar" , user.getAvatar());
         result.put("nickname" , user.getNickname());
         result.put("uname" , user.getUname());
         result.put("grade" , user.getGrade());
@@ -134,8 +141,9 @@ public class UserController {
     }
 
     @PostMapping("/classSelect/classUserList/join")//前台加入班级
-    public HashMap<Integer , String> classSelectJoin(@RequestParam String umajor ,@RequestParam String grade ,@RequestParam String uclass , @RequestParam long uid , @RequestParam String sno , @RequestParam String realname){
-        boolean classUser= userService.classJoinService(umajor , grade , uclass , uid , sno , realname);
+    public HashMap<Integer , String> classSelectJoin(@RequestParam String umajor ,@RequestParam String grade ,@RequestParam String uclass , @RequestParam String uid , @RequestParam String sno , @RequestParam String realname){
+        long id = Long.parseLong(uid);
+        boolean classUser= userService.classJoinService(umajor , grade , uclass , id , sno , realname);
         if(classUser==true){
             HashMap<Integer , String> result = new HashMap<>();
             result.put(0 , "加入班级成功！");

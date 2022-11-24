@@ -9,6 +9,6 @@ import java.util.List;
 public interface ClassDao extends JpaRepository<uClass, Long> {
     uClass findByUid(long uid);
     List<uClass> findAllByUmajorAndGradeAndUclass(String umajor, String grade, String uclass);
-    List<uClass> findAllByUmajorAndGradeAndUclassAndUid(String umajor, String grade, String uclass,long uid);
+    uClass findByUmajorAndGradeAndUclassAndUid(String umajor, String grade, String uclass,long uid);
     uClass findBySno(String sno);
 }

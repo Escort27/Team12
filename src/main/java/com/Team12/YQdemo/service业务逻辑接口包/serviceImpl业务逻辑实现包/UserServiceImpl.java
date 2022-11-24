@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
             User user = new User(uname,nickname,password,grade,umajor,uclass);
             user.setBaned(false);//新注册用户肯定没有给封禁
             user.setInclass(false);//新注册用户肯定没有加入班级组织
+            user.setAvatar("");
             SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date(System.currentTimeMillis());
             user.setCreatetime(formatter.format(date));
@@ -62,24 +63,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User changeInformationService(long uid , String newYear , String newMajor , String newClass , String newNickname ){
+    public User changeInformationService(long uid , String newYear , String newMajor , String newClass , String newNickname , String newAvatar){
         User user = userDao.findByUid(uid);
         boolean flag = false;//有一项修改了，信息就有改变，传过来的数据有用并且和源数据不一样，才修改
         if(!newNickname.equals("") && !user.getNickname().equals(newNickname)) {
                 user.setNickname(newNickname);
-                flag =true;
+                flag = true;
         }
-        if(!newYear.equals("") && user.getGrade().equals(newYear)){
+        if(!newYear.equals("") && !user.getGrade().equals(newYear)){
             user.setGrade(newYear);
-            flag =true;
+            flag = true;
         }
         if(!newMajor.equals("") && !user.getUmajor().equals(newMajor)){
             user.setUmajor(newMajor);
-            flag =true;
+            flag = true;
         }
-        if(!newClass.equals("") && user.getUclass().equals(newClass)){
+        if(!newClass.equals("") && !user.getUclass().equals(newClass)){
             user.setUclass(newClass);
-            flag =true;
+            flag = true;
+        }
+        if(!newAvatar.equals("") && !user.getAvatar().equals(newAvatar)){
+            user.setAvatar(newAvatar);
+            flag = true;
         }
         if(flag){
             userDao.save(user);
@@ -102,11 +107,11 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public String classUserInOrNotService(String umajor , String grade , String uclass , long uid) {
-        if(classDao.findAllByUmajorAndGradeAndUclassAndUid(umajor,grade,uclass,uid)!=null){
-            return "1";//在班级中
+        if(classDao.findByUmajorAndGradeAndUclassAndUid(umajor,grade,uclass,uid)==null){
+            return "not";//不在班级中
         }
         else{
-            return "0";//不在班级中
+            return "in";//在班级中
         }
     }
     @Override
@@ -141,6 +146,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User informationService(String sno){
         User user = userDao.findBySno(sno);
+        return user;
+    }
+
+    @Override
+    public User findSomeone(long uid){
+        User user = userDao.findByUid(uid);
         return user;
     }
 }
