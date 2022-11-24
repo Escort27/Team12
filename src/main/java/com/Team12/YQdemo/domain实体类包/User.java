@@ -5,11 +5,12 @@ import javax.persistence.*;
 @Table(name = "user")
 @Entity
 public class User {
+
     // 注意属性名要与数据表中的字段名一致
     // 属性varchar对应String
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long uid;
+    private long uid;
 
     private String uname;
 
@@ -89,13 +90,6 @@ public class User {
         this.baned = baned;
     }
 
-    public Long getUid() {
-        return uid;
-    }
-
-    public void setUid(Long uid) {
-        this.uid = uid;
-    }
 
     public String getUname() {
         return uname;
@@ -153,6 +147,12 @@ public class User {
 
     public void setCreatetime(String creattime) {
         this.createtime = creattime;
+    }
+    public long getUid() {
+        return uid;
+    }
+    public void setUid(long uid) {
+        this.uid = uid;
     }
 
 }
