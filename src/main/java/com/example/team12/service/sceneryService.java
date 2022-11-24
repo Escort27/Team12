@@ -15,4 +15,7 @@ public interface sceneryService {
 
 
     int deny(Map map);
+
+    void uploadpicservice(String pic_url);
 }
+

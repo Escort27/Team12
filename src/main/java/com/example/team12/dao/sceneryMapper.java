@@ -15,10 +15,7 @@ public interface sceneryMapper {
     @Select("select * from campus_scenery ")
     List<campus_scenery> refresh_all();//后台全部
 
-    //@Select("select * from campus_scenery ")
-
-
-
+    //@Select("select * from campus_scenery "
 //    @Select("select pic_url from campus_scenery order by thumbs_up DESC LIMIT 5")
 //    List<campus_scenery> refresh();
 
@@ -27,6 +24,8 @@ public interface sceneryMapper {
     @Insert("insert into campus_scenery(pic_url) values(#{pic_url})")
     int upload_pic(@Param("pic_url") String pic_url);
 
+    @Insert("insert into campus_scenery(pic_url) values(#{pic_url})")
+    void uploadpic(String pic_url);
     @Update("update campus_scenery set thumbs_up=#{thumbs_up} where pic_url=#{pic_url}")
     int give_a_like(@RequestParam ("pic_url") String pic_url,@RequestParam("thumbs_up") int thumbs_up);
 

@@ -28,7 +28,10 @@ public class sceneryServiceImpl implements sceneryService {
     public int upload_pic(Map map) {
         return scenerymapper.upload_pic((String) map.get("pic_url"));
     }
-
+    @Override
+    public void uploadpicservice(String pic_url){
+        scenerymapper.uploadpic(pic_url);
+    }
     @Override
     public int give_a_like(Map map) {
         return scenerymapper.give_a_like((String) map.get("pic_url"),(int) map.get("thumbs_up"));
