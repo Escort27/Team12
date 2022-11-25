@@ -17,7 +17,7 @@ public class Httpinsertservicelmpl implements HttpInsertService {
 
 
     @Override
-    public Integer addStreamline(Map map) {
+    public int addStreamline(Map map) {
         return streamlinemapper.add((String) map.get("website"),(String) map.get("site"));
     }
 }
