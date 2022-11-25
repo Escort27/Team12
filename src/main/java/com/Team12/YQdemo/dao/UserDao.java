@@ -1,5 +1,5 @@
-package com.Team12.YQdemo.repository数据访问层包或叫dao包;
-import com.Team12.YQdemo.domain实体类包.User;
+package com.Team12.YQdemo.dao;
+import com.Team12.YQdemo.bean.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +13,5 @@ public interface UserDao extends JpaRepository<User, Long> {
     List<User> findAllByUmajorAndGradeAndUclassAndInclass(String umajor , String grade , String uclass , boolean inclass);
 
     User findBySno(String sno);
+
 }

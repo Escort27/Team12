@@ -1,6 +1,6 @@
-package com.Team12.YQdemo.service业务逻辑接口包;
-import com.Team12.YQdemo.domain实体类包.User;
-import com.Team12.YQdemo.domain实体类包.uClass;
+package com.Team12.YQdemo.service;
+import com.Team12.YQdemo.bean.User;
+import com.Team12.YQdemo.bean.Uclass;
 import java.util.List;
 
 public interface UserService {
@@ -21,11 +21,11 @@ public interface UserService {
     void banUserService(String uname , boolean ban);//后台封禁解封账号
 
     String classUserInOrNotService(String umajor , String grade , String uclass , long uid);
-    List<uClass> classListService(String umajor , String grade , String uclass);//返回班级同学列表（前后台共用）
+    List<Uclass> classListService(String umajor , String grade , String uclass);//返回班级同学列表（前后台共用）
 
     boolean classJoinService(String umajor , String grade , String uclass , long uid , String sno , String realname);//加入班级
 
-    void classOutService (String sno);//后台踢出班级成员
+    void classOutService (String umajor , String grade , String uclass , String sno);//后台踢出班级成员
 
 
 }
