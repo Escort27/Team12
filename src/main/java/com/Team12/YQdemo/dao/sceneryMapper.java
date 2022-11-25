@@ -1,6 +1,6 @@
-package com.example.team12.dao;
+package com.Team12.YQdemo.dao;
 
-import com.example.team12.bean.campus_scenery;
+import com.Team12.YQdemo.bean.campus_scenery;
 import org.apache.ibatis.annotations.*;
 import org.springframework.web.bind.annotation.RequestParam;
 

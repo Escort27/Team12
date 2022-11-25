@@ -1,8 +1,8 @@
-package com.example.team12.service.Impl;
+package com.Team12.YQdemo.service.serviceImpl;
 
-import com.example.team12.bean.fzumap;
-import com.example.team12.dao.FzuMapper;
-import com.example.team12.service.FzuService;
+import com.Team12.YQdemo.bean.fzumap;
+import com.Team12.YQdemo.dao.FzuMapper;
+import com.Team12.YQdemo.service.FzuService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

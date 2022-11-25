@@ -1,8 +1,8 @@
-package com.example.team12.service.Impl;
+package com.Team12.YQdemo.service.serviceImpl;
 
-import com.example.team12.bean.campus_scenery;
-import com.example.team12.dao.sceneryMapper;
-import com.example.team12.service.sceneryService;
+import com.Team12.YQdemo.bean.campus_scenery;
+import com.Team12.YQdemo.dao.sceneryMapper;
+import com.Team12.YQdemo.service.sceneryService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

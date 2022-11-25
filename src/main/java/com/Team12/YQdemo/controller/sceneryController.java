@@ -1,11 +1,10 @@
-package com.example.team12.control;
+package com.Team12.YQdemo.controller;
 
-import com.example.team12.bean.campus_scenery;
-import com.example.team12.service.Impl.sceneryServiceImpl;
+import com.Team12.YQdemo.bean.campus_scenery;
+import com.Team12.YQdemo.service.serviceImpl.sceneryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;

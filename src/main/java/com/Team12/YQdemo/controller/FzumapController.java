@@ -1,7 +1,7 @@
-package com.example.team12.control;
+package com.Team12.YQdemo.controller;
 
-import com.example.team12.bean.fzumap;
-import com.example.team12.service.Impl.FzuServiceImpl;
+import com.Team12.YQdemo.bean.fzumap;
+import com.Team12.YQdemo.service.serviceImpl.FzuServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

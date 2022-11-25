@@ -1,6 +1,6 @@
-package com.example.team12.service;
+package com.Team12.YQdemo.service;
 
-import com.example.team12.bean.campus_scenery;
+import com.Team12.YQdemo.bean.campus_scenery;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.example.team12.service;
+package com.Team12.YQdemo.service;
 
-import com.example.team12.bean.fzumap;
+import com.Team12.YQdemo.bean.fzumap;
 
 import java.util.List;
 import java.util.Map;

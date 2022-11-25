@@ -1,4 +1,4 @@
-package com.example.team12.bean;
+package com.Team12.YQdemo.bean;
 
 public class campus_scenery {
     String pic_url;

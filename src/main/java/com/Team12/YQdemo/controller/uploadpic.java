@@ -1,9 +1,6 @@
-package com.example.team12.control;
+package com.Team12.YQdemo.controller;
 
-import com.example.team12.service.Impl.sceneryServiceImpl;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import com.Team12.YQdemo.service.serviceImpl.sceneryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +17,7 @@ public class uploadpic {
 
 
     @PostMapping("/uploadppp")
-    public String uploadpic(@RequestBody MultipartFile file) throws Exception{
+    public String uploadpic(@RequestParam("uploadpic") MultipartFile file) throws Exception{
         //判断文件类型
         String pType=file.getContentType();
         pType=pType.substring(pType.indexOf("/")+1);
