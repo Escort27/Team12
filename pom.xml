@@ -17,7 +17,6 @@
 		<java.version>17</java.version>
 		<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
