@@ -103,6 +103,7 @@ public class UserController {
         int page = map.get("page");
         List<User> userList = userService.userListService();
         LinkedHashMap<String , String> result = new LinkedHashMap<>();
+        result.put("count" , Integer.toString(userList.size()));
         for(int i=(page-1)*8,j=0;i<(page*8)&&i<userList.size();i++,j++){
             j=j%8;
             result.put("uid"+j , Long.toString(userList.get(i).getUid()));
@@ -111,6 +112,7 @@ public class UserController {
             result.put("grade"+j , userList.get(i).getGrade());
             result.put("umajor"+j , userList.get(i).getUmajor());
             result.put("uclass"+j , userList.get(i).getUclass());
+            result.put("createTime"+j , userList.get(i).getCreatetime());
             if(userList.get(i).getBaned() == true){
                 result.put("ban"+j , "封禁中");
             }
@@ -199,7 +201,8 @@ public class UserController {
         LinkedHashMap<String , String> result = new LinkedHashMap<>();
         result.put("count" , Integer.toString(userList.size()));
         for(int i=0;i<userList.size();i++){
-            result.put(userList.get(i).getSno() , userList.get(i).getRealname());
+            result.put("sno"+i , userList.get(i).getSno());
+            result.put("realname"+i , userList.get(i).getRealname());
         }
         return result;//返回学生个数接着是学号姓名
     }
