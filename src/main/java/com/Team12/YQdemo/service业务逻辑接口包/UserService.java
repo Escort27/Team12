@@ -1,6 +1,6 @@
 package com.Team12.YQdemo.service业务逻辑接口包;
-import com.Team12.YQdemo.domain实体类包.User;
-import com.Team12.YQdemo.domain实体类包.uClass;
+import com.Team12.YQdemo.bean实体类包.User;
+import com.Team12.YQdemo.bean实体类包.uClass;
 import java.util.List;
 
 public interface UserService {
@@ -25,7 +25,7 @@ public interface UserService {
 
     boolean classJoinService(String umajor , String grade , String uclass , long uid , String sno , String realname);//加入班级
 
-    void classOutService (String sno);//后台踢出班级成员
+    void classOutService (String umajor , String grade , String uclass , String sno);//后台踢出班级成员
 
 
 }

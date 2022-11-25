@@ -1,7 +1,7 @@
 package com.Team12.YQdemo.service业务逻辑接口包.serviceImpl业务逻辑实现包;
 
-import com.Team12.YQdemo.domain实体类包.User;
-import com.Team12.YQdemo.domain实体类包.uClass;
+import com.Team12.YQdemo.bean实体类包.User;
+import com.Team12.YQdemo.bean实体类包.uClass;
 import com.Team12.YQdemo.repository数据访问层包或叫dao包.ClassDao;
 import com.Team12.YQdemo.repository数据访问层包或叫dao包.UserDao;
 import com.Team12.YQdemo.service业务逻辑接口包.UserService;
@@ -137,10 +137,8 @@ public class UserServiceImpl implements UserService {
         return true;//加入成功
     }
     @Override
-    public void classOutService(String sno) {
-        User user = userDao.findBySno(sno);
-        user.setInclass(false);
-        userDao.save(user);
+    public void classOutService(String umajor , String grade , String uclass , String sno) {
+        classDao.deleteByUmajorAndGradeAndUclassAndSno(umajor,grade,uclass,sno);
     }
 
     @Override

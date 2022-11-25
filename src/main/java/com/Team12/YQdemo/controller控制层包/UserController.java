@@ -1,7 +1,7 @@
 package com.Team12.YQdemo.controller控制层包;
 
-import com.Team12.YQdemo.domain实体类包.User;
-import com.Team12.YQdemo.domain实体类包.uClass;
+import com.Team12.YQdemo.bean实体类包.User;
+import com.Team12.YQdemo.bean实体类包.uClass;
 import com.Team12.YQdemo.service业务逻辑接口包.UserService;
 import com.Team12.YQdemo.utils存放工具类.UserResult;
 import org.springframework.web.bind.annotation.*;
@@ -209,8 +209,12 @@ public class UserController {
 
     @PostMapping("manager/classUserList/out")//后台班级管理踢出成员
     public HashMap<String , String> managerClassUserOutController(@RequestBody HashMap<String , String> map){
-        String sno = map.get("sno");
-        userService.classOutService(sno);
+        String umajor , grade , uclass , sno;
+        umajor = map.get("umajor");
+        grade = map.get("grade");
+        uclass = map.get("uclass");
+        sno = map.get("sno");
+        userService.classOutService(umajor,grade,uclass,sno);
         HashMap<String , String> result = new HashMap<>();
         result.put("result" , "0");//已将该用户踢出班级！
         return result;
