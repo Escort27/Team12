@@ -1,4 +1,4 @@
-package com.example.team12;
+package com.example.team12.config存放配置类;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

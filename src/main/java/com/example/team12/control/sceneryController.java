@@ -1,12 +1,16 @@
-package com.example.team12.web.control;
+package com.example.team12.control;
 
 import com.example.team12.bean.campus_scenery;
 import com.example.team12.service.Impl.sceneryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.Collections.shuffle;
 
 @RestController
 @RequestMapping("/scenery")
@@ -22,7 +26,9 @@ public class sceneryController {
     }
     @GetMapping("/all")
     public List<campus_scenery> refresh_all(){
-        return sceneryserviceimpl.refresh_all();
+        List<campus_scenery> list=sceneryserviceimpl.refresh_all();
+        Collections.shuffle(list);
+        return list;
     }
     @PostMapping("/upload")
     public int shangchuang(@RequestBody Map map)//接受图片即插入url

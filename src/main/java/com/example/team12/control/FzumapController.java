@@ -1,4 +1,4 @@
-package com.example.team12.web.control;
+package com.example.team12.control;
 
 import com.example.team12.bean.fzumap;
 import com.example.team12.service.Impl.FzuServiceImpl;

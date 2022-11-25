@@ -1,14 +1,11 @@
-package com.example.team12.web.control;
+package com.example.team12.control;
 
 import com.example.team12.service.Impl.sceneryServiceImpl;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -20,8 +17,10 @@ public class uploadpic {
     @Autowired
     private sceneryServiceImpl sceneryserviceimpl;
 
+
+
     @PostMapping("/uploadppp")
-    public String uploadpic(@RequestParam("uploadpic") MultipartFile file) throws Exception{
+    public String uploadpic(@RequestBody MultipartFile file) throws Exception{
         //判断文件类型
         String pType=file.getContentType();
         pType=pType.substring(pType.indexOf("/")+1);
@@ -50,6 +49,7 @@ public class uploadpic {
     private void uploadpic(String picurl) {
         sceneryserviceimpl.uploadpicservice(picurl);
     }
+
 
 
 }
