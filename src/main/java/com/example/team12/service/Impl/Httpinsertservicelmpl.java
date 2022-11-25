@@ -7,17 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.Map;
+
 @Service
 public class Httpinsertservicelmpl implements HttpInsertService {
-    @Autowired
+    @Resource
     private streamlineMapper streamlinemapper;
 
 
     @Override
-    public int addStreamline(String website, String site) {
-        httpzhibo zb=new httpzhibo();
-        zb.setWebsite(website);
-        zb.setSite(site);
-        return streamlinemapper.add(zb);
+    public Integer addStreamline(Map map) {
+        return streamlinemapper.add((String) map.get("website"),(String) map.get("site"));
     }
 }

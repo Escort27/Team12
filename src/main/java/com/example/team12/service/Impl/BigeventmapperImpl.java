@@ -12,8 +12,8 @@ public class BigeventmapperImpl  {
     @Resource
     private BigeventtMapper bigeventtMapper;
 
-    public void bigeventselect(int x){
-        bigeventtMapper.query(x);
+    public List<Bigevent> bigeventselect(int x){
+        return bigeventtMapper.query(x);
     }
 
 

@@ -14,8 +14,14 @@ public class HttpServicelmpl implements HttpService {
     @Resource
     private HttpMapper httpMapper;
 
+
     @Override
-    public List<httpzhibo> query(){
+    public String httpquery() {
         return httpMapper.query();
+    }
+
+    @Override
+    public List<httpzhibo> zhiboquery(){
+        return httpMapper.query2();
     }
 }
