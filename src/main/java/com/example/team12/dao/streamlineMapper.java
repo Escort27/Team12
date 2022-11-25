@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Mapper
 public interface streamlineMapper {
     @Insert({"insert into streamline(website,site) values(#{website},#{site})"})
-    Integer add(@Param("website") String website, @Param("site") String site);//类+table name
+    int add(@RequestParam("website") String website, @RequestParam("site") String site);//类+table name
 }
