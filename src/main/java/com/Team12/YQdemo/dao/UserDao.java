@@ -1,5 +1,5 @@
-package com.Team12.YQdemo.repository数据访问层包或叫dao包;
-import com.Team12.YQdemo.bean实体类包.User;
+package com.Team12.YQdemo.dao;
+import com.Team12.YQdemo.bean.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

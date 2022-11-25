@@ -1,8 +1,8 @@
-package com.Team12.YQdemo.controller控制层包;
+package com.Team12.YQdemo.controller;
 
-import com.Team12.YQdemo.bean实体类包.User;
-import com.Team12.YQdemo.bean实体类包.uClass;
-import com.Team12.YQdemo.service业务逻辑接口包.UserService;
+import com.Team12.YQdemo.bean.User;
+import com.Team12.YQdemo.bean.Uclass;
+import com.Team12.YQdemo.service.UserService;
 import com.Team12.YQdemo.utils存放工具类.UserResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -142,7 +142,7 @@ public class UserController {
         String uclass = map.get("uclass");
         long id = Long.parseLong(uid);
         String inOrNot = userService.classUserInOrNotService(umajor , grade, uclass , id);
-        List<uClass> userList = userService.classListService(umajor , grade , uclass);
+        List<Uclass> userList = userService.classListService(umajor , grade , uclass);
         LinkedHashMap<String , String> result = new LinkedHashMap<>();
         result.put("inOrNot" , inOrNot);
         result.put("count" , Integer.toString(userList.size()));
@@ -197,7 +197,7 @@ public class UserController {
         umajor = map.get("umajor");
         grade = map.get("grade");
         uclass = map.get("uclass");
-        List<uClass> userList = userService.classListService(umajor , grade , uclass);
+        List<Uclass> userList = userService.classListService(umajor , grade , uclass);
         LinkedHashMap<String , String> result = new LinkedHashMap<>();
         result.put("count" , Integer.toString(userList.size()));
         for(int i=0;i<userList.size();i++){

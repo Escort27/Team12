@@ -1,10 +1,10 @@
-package com.Team12.YQdemo.bean实体类包;
+package com.Team12.YQdemo.bean;
 
 import javax.persistence.*;
 
 @Table(name = "class")
 @Entity
-public class uClass {
+public class Uclass {
     // 注意属性名要与数据表中的字段名一致
     // 属性varchar对应String
     @Id
@@ -22,9 +22,9 @@ public class uClass {
     private long uid;
 
 
-    public uClass(){}
+    public Uclass(){}
 
-    public uClass(String umajor , String grade , String uclass ,  long uid , String sno , String realname) {
+    public Uclass(String umajor , String grade , String uclass , long uid , String sno , String realname) {
         this.uid = uid;
         this.sno = sno;
         this.realname = realname;

@@ -1,10 +1,10 @@
-package com.Team12.YQdemo.service业务逻辑接口包.serviceImpl业务逻辑实现包;
+package com.Team12.YQdemo.service.serviceImpl;
 
-import com.Team12.YQdemo.bean实体类包.User;
-import com.Team12.YQdemo.bean实体类包.uClass;
-import com.Team12.YQdemo.repository数据访问层包或叫dao包.ClassDao;
-import com.Team12.YQdemo.repository数据访问层包或叫dao包.UserDao;
-import com.Team12.YQdemo.service业务逻辑接口包.UserService;
+import com.Team12.YQdemo.bean.User;
+import com.Team12.YQdemo.bean.Uclass;
+import com.Team12.YQdemo.dao.ClassDao;
+import com.Team12.YQdemo.dao.UserDao;
+import com.Team12.YQdemo.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -115,8 +115,8 @@ public class UserServiceImpl implements UserService {
         }
     }
     @Override
-    public List<uClass> classListService(String umajor , String grade , String uclass) {
-        List<uClass> ClassUserList = classDao.findAllByUmajorAndGradeAndUclass(umajor , grade , uclass );
+    public List<Uclass> classListService(String umajor , String grade , String uclass) {
+        List<Uclass> ClassUserList = classDao.findAllByUmajorAndGradeAndUclass(umajor , grade , uclass );
         return ClassUserList;
     }
     @Override
@@ -132,7 +132,7 @@ public class UserServiceImpl implements UserService {
         }
         user.setRealname(realname);
         userDao.save(user);
-        uClass classUser = new uClass(umajor , grade , uclass , uid , sno , realname);
+        Uclass classUser = new Uclass(umajor , grade , uclass , uid , sno , realname);
         classDao.save(classUser);
         return true;//加入成功
     }
