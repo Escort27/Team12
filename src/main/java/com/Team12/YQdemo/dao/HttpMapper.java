@@ -1,6 +1,6 @@
-package com.example.team12.dao;
+package com.team12.YQdemo.dao;
 
-import com.example.team12.bean.httpzhibo;
+import com.team12.YQdemo.bean.httpzhibo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

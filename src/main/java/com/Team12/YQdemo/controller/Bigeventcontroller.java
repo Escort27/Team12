@@ -1,7 +1,7 @@
-package com.example.team12.controller;
+package com.team12.YQdemo.controller;
 
-import com.example.team12.bean.Bigevent;
-import com.example.team12.service.serviceImpl.BigeventmapperImpl;
+import com.team12.YQdemo.bean.Bigevent;
+import com.team12.YQdemo.service.serviceImpl.BigeventmapperImpl;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

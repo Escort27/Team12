@@ -1,7 +1,7 @@
-package com.example.team12.service.serviceImpl;
+package com.team12.YQdemo.service.serviceImpl;
 
-import com.example.team12.dao.streamlineMapper;
-import com.example.team12.service.HttpInsertService;
+import com.team12.YQdemo.dao.streamlineMapper;
+import com.team12.YQdemo.service.HttpInsertService;
 
 import org.springframework.stereotype.Service;
 

@@ -1,10 +1,7 @@
-package com.example.team12.dao;
+package com.team12.YQdemo.dao;
 
-import com.example.team12.bean.httpzhibo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Mapper

@@ -1,7 +1,7 @@
-package com.example.team12.service.serviceImpl;
+package com.team12.YQdemo.service.serviceImpl;
 
-import com.example.team12.bean.Bigevent;
-import com.example.team12.dao.BigeventtMapper;
+import com.team12.YQdemo.bean.Bigevent;
+import com.team12.YQdemo.dao.BigeventtMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

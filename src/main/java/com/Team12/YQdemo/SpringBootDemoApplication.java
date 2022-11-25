@@ -1,4 +1,4 @@
-package com.example.team12;
+package com.team12.YQdemo;
 
 
 import org.springframework.boot.SpringApplication;

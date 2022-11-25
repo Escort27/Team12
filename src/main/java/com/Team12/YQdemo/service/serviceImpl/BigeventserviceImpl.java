@@ -1,8 +1,8 @@
-package com.example.team12.service.serviceImpl;
+package com.team12.YQdemo.service.serviceImpl;
 
-import com.example.team12.bean.Bigevent;
-import com.example.team12.dao.BigeventInsert;
-import com.example.team12.service.BigeventService;
+import com.team12.YQdemo.bean.Bigevent;
+import com.team12.YQdemo.dao.BigeventInsert;
+import com.team12.YQdemo.service.BigeventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;

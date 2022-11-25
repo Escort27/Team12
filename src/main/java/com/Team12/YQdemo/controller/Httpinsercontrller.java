@@ -1,6 +1,6 @@
-package com.example.team12.controller;
+package com.team12.YQdemo.controller;
 
-import com.example.team12.service.serviceImpl.Httpinsertservicelmpl;
+import com.team12.YQdemo.service.serviceImpl.Httpinsertservicelmpl;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

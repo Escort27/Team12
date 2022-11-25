@@ -1,6 +1,6 @@
-package com.example.team12.controller;
+package com.team12.YQdemo.controller;
 
-import com.example.team12.bean.Bigevent;
+import com.team12.YQdemo.bean.Bigevent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

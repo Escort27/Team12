@@ -1,6 +1,6 @@
-package com.example.team12.service;
+package com.team12.YQdemo.service;
 
-import com.example.team12.bean.httpzhibo;
+import com.team12.YQdemo.bean.httpzhibo;
 
 import java.util.List;
 

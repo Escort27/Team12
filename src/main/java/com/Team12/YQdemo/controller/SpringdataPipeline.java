@@ -1,7 +1,7 @@
-package com.example.team12.controller;
+package com.team12.YQdemo.controller;
 
-import com.example.team12.bean.Bigevent;
-import com.example.team12.service.BigeventService;
+import com.team12.YQdemo.bean.Bigevent;
+import com.team12.YQdemo.service.BigeventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.ResultItems;

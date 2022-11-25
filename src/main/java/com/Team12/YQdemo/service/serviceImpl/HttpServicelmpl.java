@@ -1,8 +1,8 @@
-package com.example.team12.service.serviceImpl;
+package com.team12.YQdemo.service.serviceImpl;
 
-import com.example.team12.bean.httpzhibo;
-import com.example.team12.dao.HttpMapper;
-import com.example.team12.service.HttpService;
+import com.team12.YQdemo.bean.httpzhibo;
+import com.team12.YQdemo.dao.HttpMapper;
+import com.team12.YQdemo.service.HttpService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

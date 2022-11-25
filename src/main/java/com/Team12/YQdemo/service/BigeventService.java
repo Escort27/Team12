@@ -1,6 +1,6 @@
-package com.example.team12.service;
+package com.team12.YQdemo.service;
 
-import com.example.team12.bean.Bigevent;
+import com.team12.YQdemo.bean.Bigevent;
 
 import java.util.List;
 

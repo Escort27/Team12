@@ -1,4 +1,4 @@
-package com.example.team12.bean;
+package com.team12.YQdemo.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

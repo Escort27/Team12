@@ -1,7 +1,7 @@
-package com.example.team12.controller;
+package com.team12.YQdemo.controller;
 
-import com.example.team12.bean.httpzhibo;
-import com.example.team12.service.serviceImpl.HttpServicelmpl;
+import com.team12.YQdemo.bean.httpzhibo;
+import com.team12.YQdemo.service.serviceImpl.HttpServicelmpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
