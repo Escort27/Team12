@@ -16,8 +16,8 @@ public class Httpinsercontrller {
     @Resource
     Httpinsertservicelmpl httpinsertservicelmpl;
 
-    @RequestMapping(value = "/insertzhibo")//和ajax请求中url相对应
-    public Integer updatezhibo(@RequestBody Map map){
+    @PostMapping(value = "/insertzhibo")//和ajax请求中url相对应
+    public int updatezhibo(@RequestBody Map map){
         return httpinsertservicelmpl.addStreamline(map);
     }
 
