@@ -8,6 +8,7 @@ import com.Team12.YQdemo.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -136,6 +137,7 @@ public class UserServiceImpl implements UserService {
         classDao.save(classUser);
         return true;//加入成功
     }
+    @Transactional
     @Override
     public void classOutService(String umajor , String grade , String uclass , String sno) {
         classDao.deleteByUmajorAndGradeAndUclassAndSno(umajor,grade,uclass,sno);

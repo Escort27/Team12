@@ -49,7 +49,7 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
-		<dependency>
+		<dependency>3-
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper-core</artifactId>
 			<version>4.2.2</version>
