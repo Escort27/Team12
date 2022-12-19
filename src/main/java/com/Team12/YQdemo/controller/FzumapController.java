@@ -12,6 +12,7 @@ import java.util.Map;
  * @author cr
  * &#064;date   2022/11/11
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/test")
 public class FzumapController {

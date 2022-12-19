@@ -1,0 +1,25 @@
+{
+    "replys": [
+        {
+            "id": "111",
+            "head": "../../static/userimg.png",
+            "name": "张1",
+            "time": "2022.11.13",
+            "inside": "我爱母校1"
+        },
+        {
+            "id": "222",
+            "head": "../../static/userimg.png",
+            "name": "张2",
+            "time": "2022.11.13",
+            "inside": "我爱母校2"
+        },
+        {
+            "id": "333",
+            "head": "../../static/userimg.png",
+            "name": "张3",
+            "time": "2022.11.13",
+            "inside": "我爱母校3"
+        }
+    ]
+}

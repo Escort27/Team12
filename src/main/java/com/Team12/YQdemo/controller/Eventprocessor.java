@@ -4,6 +4,7 @@ import com.Team12.YQdemo.bean.Bigevent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -14,7 +15,7 @@ import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 
 import java.util.List;
-
+@CrossOrigin
 @Component
 public class Eventprocessor implements PageProcessor {
     private String url="https://ccds.fzu.edu.cn/xwzx/xytz.htm";

@@ -1,0 +1,44 @@
+{
+    "comments": [
+        {
+            "id": "222",
+            "head": "../../static/userimg.png",
+            "name": "张2",
+            "time": "2022.11.13",
+            "inside": "我爱母校2",
+            "goods": 200
+        },
+        {
+            "id": "222",
+            "head": "../../static/userimg.png",
+            "name": "张2",
+            "time": "2022.11.13",
+            "inside": "我爱母校2",
+            "goods": 200
+        },
+        {
+            "id": "333",
+            "head": "../../static/userimg.png",
+            "name": "张3",
+            "time": "2022.11.13",
+            "inside": "我爱母校3",
+            "goods": 200
+        },
+        {
+            "id": "444",
+            "head": "../../static/userimg.png",
+            "name": "张4",
+            "time": "2022.11.13",
+            "inside": "我爱母校4",
+            "goods": 200
+        },
+        {
+            "id": "555",
+            "head": "../../static/userimg.png",
+            "name": "张5",
+            "time": "2022.11.13",
+            "inside": "我爱母校5",
+            "goods": 200
+        }
+    ]
+}

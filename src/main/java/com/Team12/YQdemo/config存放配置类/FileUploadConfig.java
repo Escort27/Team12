@@ -9,7 +9,7 @@ public class FileUploadConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**").
-                addResourceLocations("file:///D:/IDEA/Team12/src/main/resources/images/");
+                addResourceLocations("file:///usr/images/");
 //        如果不知道如何以file开头就用浏览器打开该图片
 
 //

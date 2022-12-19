@@ -4,10 +4,11 @@ import com.Team12.YQdemo.bean.Bigevent;
 import com.Team12.YQdemo.service.BigeventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
-
+@CrossOrigin
 @Component
 public class SpringdataPipeline implements Pipeline {
     @Autowired

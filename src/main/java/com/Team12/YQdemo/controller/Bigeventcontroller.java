@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@CrossOrigin
 @RestController
 public class Bigeventcontroller {
     @Resource

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Collections.shuffle;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/scenery")
 public class sceneryController {

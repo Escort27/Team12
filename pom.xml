@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 		<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -49,7 +50,7 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
-		<dependency>3-
+		<dependency>
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper-core</artifactId>
 			<version>4.2.2</version>

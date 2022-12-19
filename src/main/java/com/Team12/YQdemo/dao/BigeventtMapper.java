@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper
 public interface BigeventtMapper {
-    @Select("select title,link,date from bigevent order by date DESC limit #{x},10")
+    @Select("select title,link,date from Bigevent order by date DESC limit #{x},10")
     public List<Bigevent> query(@Param("x") int x);
 
 
